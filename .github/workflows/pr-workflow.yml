@@ -20,15 +20,14 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: Download substrate
+      - name: Download substrate-node binary
         id: download-artifact
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@268677152d06ba59fcec7a7f0b5d961b6ccd7e1e # v2.28.0
         with:
           workflow: build-substrate.yml
           name: nightly-substrate-binary
-          # path: ~/.local/bin
 
-      - name: debug
+      - name: Prepare substrate-node binary
         run: |
           chmod u+x ./substrate-node
           ./substrate-node --version
