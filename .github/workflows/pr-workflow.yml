@@ -29,10 +29,11 @@ jobs:
         with:
           workflow: build-substrate.yml
           name: nightly-substrate-binary
-          path: ~/.local/bin
+          # path: ~/.local/bin
 
       - name: debug
         run: |
+          echo ~/.local/bin
           pwd
           ls -al
           echo $PATH
