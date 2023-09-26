@@ -28,5 +28,11 @@ jobs:
           name: nightly-substrate-binary
           path: ~/.local/bin
 
+      - name: debug
+        run: |
+          echo pwd
+          echo $PATH
+          ~/.local/bin/substrate-node --version
+
       - name: print substrate version
         run: substrate-node --version
