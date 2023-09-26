@@ -3,7 +3,7 @@ name: Build Substrate Binary
 on:
   # Allow it to be manually ran:
   workflow_dispatch: {}
-  # Run at 2am every day
+  # Run at 2am every day for nightly builds.
   schedule:
     - cron: "0 2 * * *"
 
@@ -27,7 +27,7 @@ jobs:
         uses: Swatinem/rust-cache@e207df5d269b42b69c8bc5101da26f7d31feddb4 # v2.6.2
 
       - name: build substrate binary
-        uses: actions-rs/cargo@v1.0.3
+        uses: actions-rs/cargo@v1
         with:
           command: build
           args: --manifest-path substrate/bin/node/cli/Cargo.toml # --release for real
