@@ -1,0 +1,32 @@
+name: PR workflow
+
+on:
+    push:
+        # Run jobs when commits are pushed to
+        # master or release-like branches:
+        branches:
+            - master
+    pull_request:
+        # Run jobs for any external PR that wants
+        # to merge to master, too:
+        branches:
+            - master
+
+jobs:
+    check:
+        name: Cargo check
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout sources
+              uses: actions/checkout@v4
+
+            - name: Download substrate
+              id: download-artifact
+              uses: dawidd6/action-download-artifact@v2
+              with:
+                workflow: build-substrate.yml
+                name: nightly-substrate-binary
+                path: ~/.local/bin
+
+            - name: print substrate version
+              run: substrate-node --version
