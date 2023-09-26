@@ -20,9 +20,6 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
-      - name: make dir for substrate
-        run: mkdir -p ~/.local/bin
-
       - name: Download substrate
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
@@ -33,13 +30,10 @@ jobs:
 
       - name: debug
         run: |
-          echo ~/.local/bin
-          pwd
-          ls -al
-          echo $PATH
-          cd ~/.local/bin
-          ls -al
-          ~/.local/bin/substrate-node --version
+          chmod u+x ./substrate-node
+          ./substrate-node --version
+          mkdir -p ~/.local/bin
+          cp ./substrate-node ~/.local/bin
 
       - name: print substrate version
         run: substrate-node --version
