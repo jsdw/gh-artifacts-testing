@@ -17,11 +17,14 @@ jobs:
         with:
           repository: paritytech/polkadot-sdk
 
+      - name: Install dependencies
+        run: sudo apt-get install -y protobuf-compiler
+
       - name: build substrate binary
         uses: actions-rs/cargo@v1.0.3
         with:
           command: build
-          args: --release --manifest-path substrate/bin/node/cli/Cargo.toml
+          args: --manifest-path substrate/bin/node/cli/Cargo.toml
 
       - name: upload substrate binary
         uses: actions/upload-artifact@v3
