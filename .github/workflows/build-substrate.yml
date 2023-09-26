@@ -30,10 +30,11 @@ jobs:
         uses: actions-rs/cargo@v1.0.3
         with:
           command: build
-          args: --manifest-path substrate/bin/node/cli/Cargo.toml
+          args: --manifest-path substrate/bin/node/cli/Cargo.toml # --release for real
 
       - name: upload substrate binary
         uses: actions/upload-artifact@v3
         with:
           name: nightly-substrate-binary
-          path: target/release/substrate-node
+          path: target/debug/substrate-node # target/release for real
+          if-no-files-found: error
