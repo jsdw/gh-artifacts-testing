@@ -20,6 +20,9 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v4
 
+      - name: make dir for substrate
+        run: mkdir -p ~/.local/bin
+
       - name: Download substrate
         id: download-artifact
         uses: dawidd6/action-download-artifact@v2
