@@ -30,8 +30,11 @@ jobs:
 
       - name: debug
         run: |
-          echo pwd
+          pwd
+          ls -al
           echo $PATH
+          cd ~/.local/bin
+          ls -al
           ~/.local/bin/substrate-node --version
 
       - name: print substrate version
