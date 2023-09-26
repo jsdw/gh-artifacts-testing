@@ -1,8 +1,10 @@
 name: Build Substrate Binary
 
 on:
+  # Allow it to be manually ran:
+  workflow_dispatch: {}
+  # Run at 2am every day
   schedule:
-    # Run at 2am every day
     - cron: "0 2 * * *"
 
 jobs:
